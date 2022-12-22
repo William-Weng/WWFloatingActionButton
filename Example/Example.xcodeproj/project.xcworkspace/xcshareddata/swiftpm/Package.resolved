@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "wwfloatingactionbutton",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/William-Weng/WWFloatingActionButton.git",
+      "state" : {
+        "revision" : "543417bcce22934b90864d4e0f50dc429f462854",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "wwprint",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWPrint.git",

@@ -13,6 +13,7 @@
 		3DBCD87D26F198F300522E3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCD87C26F198F300522E3B /* Assets.xcassets */; };
 		3DBCD88026F198F300522E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCD87E26F198F300522E3B /* LaunchScreen.storyboard */; };
 		8109732829530840005F00BC /* WWPrint in Frameworks */ = {isa = PBXBuildFile; productRef = 8109732729530840005F00BC /* WWPrint */; };
+		818782C0295427B0009D5681 /* WWFloatingActionButton in Frameworks */ = {isa = PBXBuildFile; productRef = 818782BF295427B0009D5681 /* WWFloatingActionButton */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818782C0295427B0009D5681 /* WWFloatingActionButton in Frameworks */,
 				8109732829530840005F00BC /* WWPrint in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +118,7 @@
 			name = Example;
 			packageProductDependencies = (
 				8109732729530840005F00BC /* WWPrint */,
+				818782BF295427B0009D5681 /* WWFloatingActionButton */,
 			);
 			productName = Example;
 			productReference = 3DBCD87026F198EF00522E3B /* Example.app */;
@@ -146,7 +149,7 @@
 			mainGroup = 3DBCD86726F198EF00522E3B;
 			packageReferences = (
 				8109732629530840005F00BC /* XCRemoteSwiftPackageReference "WWPrint" */,
-				8109732929530858005F00BC /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */,
+				818782BE295427B0009D5681 /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */,
 			);
 			productRefGroup = 3DBCD87126F198EF00522E3B /* Products */;
 			projectDirPath = "";
@@ -390,12 +393,12 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		8109732929530858005F00BC /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */ = {
+		818782BE295427B0009D5681 /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/William-Weng/WWFloatingActionButton.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -405,6 +408,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8109732629530840005F00BC /* XCRemoteSwiftPackageReference "WWPrint" */;
 			productName = WWPrint;
+		};
+		818782BF295427B0009D5681 /* WWFloatingActionButton */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 818782BE295427B0009D5681 /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */;
+			productName = WWFloatingActionButton;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

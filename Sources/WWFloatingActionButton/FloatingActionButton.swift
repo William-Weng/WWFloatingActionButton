@@ -14,7 +14,14 @@ public enum WWFloatingButtonAnimationType {
     case down
     case left
     case right
+    case circleArc(startAngle: CGFloat, endAngle: CGFloat, distance: CGFloat, count: Int)
     
+    /// 產生動畫的frame
+    /// - Parameters:
+    ///   - index: Int
+    ///   - baseFrame: 為基準的Frame
+    ///   - itemGap: ItemButton間的間隔
+    /// - Returns: CGRect
     func frame(with index: Int, baseFrame: CGRect, itemGap: CGFloat) -> CGRect {
         
         let offset = (index + 1)._CGFloat() * (baseFrame.size.height + itemGap)
@@ -25,9 +32,34 @@ public enum WWFloatingButtonAnimationType {
         case .down: coordinates = CGPoint(x: baseFrame.origin.x, y: baseFrame.origin.y + offset)
         case .left: coordinates = CGPoint(x: baseFrame.origin.x - offset, y: baseFrame.origin.y)
         case .right: coordinates = CGPoint(x: baseFrame.origin.x + offset, y: baseFrame.origin.y)
+        case .circleArc(let startAngle, let endAngle, let distance, let count): coordinates = circleArcFrame(with: index, baseFrame: baseFrame, startAngle: startAngle, endAngle: endAngle, distance: distance, count: count)
         }
         
         return CGRect(origin: coordinates, size: baseFrame.size)
+    }
+    
+    /// 圓弧的frame
+    /// - Parameters:
+    ///   - index: Int
+    ///   - baseFrame: 為基準的Frame
+    ///   - startAngle: 起始的角度
+    ///   - endAngle: 結束的角度
+    ///   - distance: 間隔
+    ///   - count: ItemButton數量
+    /// - Returns: CGPoint
+    func circleArcFrame(with index: Int, baseFrame: CGRect, startAngle: CGFloat, endAngle: CGFloat, distance: CGFloat, count: Int) -> CGPoint {
+        
+        if count < 2 { return .zero }
+        
+        var coordinates = CGPoint()
+        
+        let gap = count - 1
+        let angleGap = (startAngle - endAngle) / gap._CGFloat()
+        let angle = angleGap * (gap - index)._CGFloat() + endAngle
+        
+        coordinates = CGPoint(x: baseFrame.origin.x + distance * cos(angle._radian()), y: baseFrame.origin.y - distance * sin(angle._radian()))
+        
+        return coordinates
     }
 }
 
@@ -265,4 +297,3 @@ private extension WWFloatingActionButton {
         })
     }
 }
-
