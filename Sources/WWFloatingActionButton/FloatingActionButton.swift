@@ -63,10 +63,17 @@ public enum WWFloatingButtonAnimationType {
     }
 }
 
+// MARK: - 執行在哪個類型的View上
+public enum WWFloatingButtonAnimationViewType {
+    case viewController(_ target: UIViewController)
+    case navigationController(_ target: UIViewController)
+    case tabBarController(_ target: UIViewController)
+}
+
 // MARK: - 使用的協定
 public protocol WWFloatingActionButtonDelegate {
     
-    func currentView(with tag: Int) -> UIView                                           // 取得該ViewController要彈出的底View
+    func currentViewType(with tag: Int) -> WWFloatingButtonAnimationViewType            // 取得該ViewController要彈出的底View
     func mainButtonStatus(isTouched: Bool, with tag: Int)                               // 主按鈕的開關狀態
     func itemButton(with tag: Int, didTouched index: Int)                               // 哪一個按鈕被按到，從0開始
     func itemButtonImages(with tag: Int) -> [UIImage]                                   // 子按鈕的圖片
@@ -91,8 +98,19 @@ open class WWFloatingActionButton: UIView {
     private var floatingButtonMainView: UIView = UIView()
     private var itemButtons: [UIButton] = []
     
-    private var currentView: UIView? { get { myDelegate?.currentView(with: tag) }}
     private var itemImages: [UIImage]? { get { myDelegate?.itemButtonImages(with: tag) }}
+    
+    private var currentView: UIView? { get {
+        
+        guard let viewType = myDelegate?.currentViewType(with: tag) else { return nil }
+        
+        switch viewType {
+        case .viewController(let viewController): return viewController.view
+        case .navigationController(let viewController): return viewController.navigationController?.view
+        case .tabBarController(let viewController): return viewController.tabBarController?.view
+        }
+    }}
+        
     private var isTouched: Bool = false {
         willSet {
             let image = (newValue) ? touchedImage : disableImage
@@ -127,10 +145,10 @@ open class WWFloatingActionButton: UIView {
 
     @IBAction func mainButtonAction(_ sender: UIButton) {
         
-        translatesAutoresizingMaskIntoConstraints = true
+        guard let currentView = self.currentView else { return }
         
-        let currentView = myDelegate?.currentView(with: tag)
-        currentView?.addSubview(self)
+        translatesAutoresizingMaskIntoConstraints = true
+        currentView.addSubview(self)
         toggleFloatButton(action: {})
     }
 }
@@ -245,7 +263,7 @@ private extension WWFloatingActionButton {
         itemButtonAnimation(for: itemButtons, isTouched: isTouched, finished: { _ in action?() })
     }
     
-    /// 主按鍵被點到的動畫
+    /// 主按鍵被點到的動畫 => 彈出畫面的動畫
     /// - Parameters:
     ///   - buttons: [UIButton]
     ///   - currentView: UIView?
@@ -270,12 +288,7 @@ private extension WWFloatingActionButton {
         })
     }
     
-    func coordinates(with index: Int, baseFrame: CGRect, itemGap: CGFloat) -> CGRect {
-        let coordinates = CGPoint(x: baseFrame.origin.x, y: baseFrame.origin.y + ((index + 1)._CGFloat() * (baseFrame.size.height + itemGap)))
-        return CGRect(origin: coordinates, size: baseFrame.size)
-    }
-    
-    /// 主按鍵Close的動畫
+    /// 主按鍵Close的動畫 => 回到原點Button的位置
     /// - Parameters:
     ///   - buttons: [UIButton]
     ///   - currentView: UIView?
@@ -296,4 +309,16 @@ private extension WWFloatingActionButton {
             finished(true)
         })
     }
+    
+    /// 項目按扭的位置 / 大小
+    /// - Parameters:
+    ///   - index: Int
+    ///   - baseFrame: CGRect
+    ///   - itemGap: CGFloat
+    /// - Returns: CGRect
+    func itemButtonFrame(with index: Int, baseFrame: CGRect, itemGap: CGFloat) -> CGRect {
+        let coordinates = CGPoint(x: baseFrame.origin.x, y: baseFrame.origin.y + ((index + 1)._CGFloat() * (baseFrame.size.height + itemGap)))
+        return CGRect(origin: coordinates, size: baseFrame.size)
+    }
 }
+

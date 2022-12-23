@@ -45,11 +45,19 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="disableImage" value="switch_off"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38Z-rq-QOP">
+                                <rect key="frame" x="86" y="246" width="148.5" height="76.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F30-jQ-vmq" secondAttribute="bottom" constant="20" id="2VT-94-NGU"/>
+                            <constraint firstItem="38Z-rq-QOP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6MD-7S-p2Y"/>
+                            <constraint firstItem="38Z-rq-QOP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jY8-p4-A50"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F30-jQ-vmq" secondAttribute="trailing" constant="20" id="mYq-aP-A3J"/>
                         </constraints>
                     </view>
@@ -57,6 +65,7 @@
                     <connections>
                         <outlet property="myFloatingActionButton" destination="F30-jQ-vmq" id="Mz4-d7-u8g"/>
                         <outlet property="myImageView" destination="fbP-k7-Bae" id="cdQ-oh-KOL"/>
+                        <outlet property="titleLabel" destination="38Z-rq-QOP" id="3XS-1d-71x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,7 +79,7 @@
                     <tabBarItem key="tabBarItem" title="" badgeValue="87" systemItem="featured" id="D1A-M1-EbG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0CM-fo-0qj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -88,6 +97,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jxT-t6-tLE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="shb-S0-RB9">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
