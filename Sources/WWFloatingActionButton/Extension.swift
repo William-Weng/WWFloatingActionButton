@@ -15,6 +15,15 @@ extension Int {
     func _CGFloat() -> CGFloat { return CGFloat(self) }
 }
 
+extension CGFloat {
+    
+    /// 180° => π
+    func _radian() -> CGFloat { return (self / 180.0) * .pi }
+    
+    /// π => 180°
+    func _angle() -> CGFloat { return self * (180.0 / .pi) }
+}
+
 // MARK: - CALayer (class function)
 extension CALayer {
     
@@ -31,11 +40,9 @@ extension CALayer {
     }
 }
 
-
 // MARK: - Collection (override class function)
 extension Collection {
 
     /// [為Array加上安全取值特性 => nil](https://stackoverflow.com/questions/25329186/safe-bounds-checked-array-lookup-in-swift-through-optional-bindings)
     subscript(safe index: Index) -> Element? { return indices.contains(index) ? self[index] : nil }
 }
-

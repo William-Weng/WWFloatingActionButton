@@ -64,6 +64,7 @@ extension ViewController: WWFloatingActionButtonDelegate {
 ### 版本更新說明
 |版本號|說明|備註|
 |-|-|-|
+|1.1.2|修正extension CGFloat|-|
 |1.1.1|修改currentViewType(with tag: Int)|-|
 |1.1.0|新增圓弧動畫效果|-|
 |1.0.0|基本上下左右四個方向的動畫|-|
