@@ -6,6 +6,15 @@ Android-like FloatingActionButton. / 仿Android的FloatingActionButton.
 
 ![](./Example.gif)
 
+### 版本更新說明
+|版本號|說明|備註|
+|-|-|-|
+|1.2.0|加上左 / 上文字顯示功能|-|
+|1.1.2|修正extension CGFloat|-|
+|1.1.1|修改currentViewType(with tag: Int)|-|
+|1.1.0|新增圓弧動畫效果|-|
+|1.0.0|基本上下左右四個方向的動畫|-|
+
 ### [Installation with Swift Package Manager](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/使用-spm-安裝第三方套件-xcode-11-新功能-2c4ffcf85b4b)
 ```bash
 dependencies: [
@@ -60,11 +69,3 @@ extension ViewController: WWFloatingActionButtonDelegate {
     }
 }
 ```
-
-### 版本更新說明
-|版本號|說明|備註|
-|-|-|-|
-|1.1.2|修正extension CGFloat|-|
-|1.1.1|修改currentViewType(with tag: Int)|-|
-|1.1.0|新增圓弧動畫效果|-|
-|1.0.0|基本上下左右四個方向的動畫|-|
