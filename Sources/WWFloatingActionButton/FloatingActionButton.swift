@@ -124,6 +124,7 @@ private extension WWFloatingActionButton {
         isTouched = false
         isInitSettting = true
         
+        mainButton.imageView?.contentMode = .scaleAspectFit;
         myDelegate?.mainButtonStatus(isTouched: isTouched, with: tag)
     }
     

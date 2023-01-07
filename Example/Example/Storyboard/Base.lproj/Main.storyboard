@@ -56,10 +56,10 @@
                                 </constraints>
                             </imageView>
                             <view tag="101" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPj-B8-KpG" customClass="WWFloatingActionButton" customModule="WWFloatingActionButton">
-                                <rect key="frame" x="240" y="44" width="64" height="64"/>
+                                <rect key="frame" x="272" y="44" width="32" height="32"/>
                                 <color key="backgroundColor" systemColor="systemMintColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="9oe-cS-Mg6"/>
+                                    <constraint firstAttribute="width" constant="32" id="9oe-cS-Mg6"/>
                                     <constraint firstAttribute="width" secondItem="SPj-B8-KpG" secondAttribute="height" multiplier="1:1" id="TQB-Gg-c7n"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
