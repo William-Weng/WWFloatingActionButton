@@ -22,18 +22,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F30-jQ-vmq" customClass="WWFloatingActionButton" customModule="WWFloatingActionButton">
-                                <rect key="frame" x="236" y="435" width="64" height="64"/>
+                                <rect key="frame" x="240" y="455" width="64" height="64"/>
                                 <color key="backgroundColor" systemColor="systemMintColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="F30-jQ-vmq" secondAttribute="height" multiplier="1:1" id="KX3-rk-emD"/>
-                                    <constraint firstAttribute="width" constant="64" id="dkh-yA-ZK0"/>
+                                    <constraint firstAttribute="width" secondItem="F30-jQ-vmq" secondAttribute="height" multiplier="1:1" id="G1z-o1-fUj"/>
+                                    <constraint firstAttribute="width" constant="64" id="X2x-Xl-g1n"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="itemButtonCount">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="itemGap">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="itemBackgroundColor">
                                         <color key="value" white="0.0" alpha="0.30186775659999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,29 +43,33 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="image" keyPath="touchedImage" value="switch_on"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="disableImage" value="switch_off"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="labelGap">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38Z-rq-QOP">
-                                <rect key="frame" x="86" y="246" width="148.5" height="76.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gE6-OK-6eS">
+                                <rect key="frame" x="128" y="252" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="3KT-5Y-zoj"/>
+                                    <constraint firstAttribute="width" secondItem="gE6-OK-6eS" secondAttribute="height" id="O6A-hy-JqS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F30-jQ-vmq" secondAttribute="bottom" constant="20" id="2VT-94-NGU"/>
-                            <constraint firstItem="38Z-rq-QOP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6MD-7S-p2Y"/>
-                            <constraint firstItem="38Z-rq-QOP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jY8-p4-A50"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F30-jQ-vmq" secondAttribute="trailing" constant="20" id="mYq-aP-A3J"/>
+                            <constraint firstItem="gE6-OK-6eS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LYI-xZ-GnP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F30-jQ-vmq" secondAttribute="trailing" constant="16" id="M9d-Tj-mn1"/>
+                            <constraint firstItem="F30-jQ-vmq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OuC-lh-F94"/>
+                            <constraint firstItem="gE6-OK-6eS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZW2-Mm-kd6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nvs-zi-2RQ"/>
                     <connections>
                         <outlet property="myFloatingActionButton" destination="F30-jQ-vmq" id="Mz4-d7-u8g"/>
                         <outlet property="myImageView" destination="fbP-k7-Bae" id="cdQ-oh-KOL"/>
-                        <outlet property="titleLabel" destination="38Z-rq-QOP" id="3XS-1d-71x"/>
+                        <outlet property="statusImageView" destination="gE6-OK-6eS" id="RUb-XQ-dJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

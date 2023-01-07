@@ -12,7 +12,7 @@
 		3DBCD87B26F198EF00522E3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCD87926F198EF00522E3B /* Main.storyboard */; };
 		3DBCD87D26F198F300522E3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCD87C26F198F300522E3B /* Assets.xcassets */; };
 		3DBCD88026F198F300522E3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCD87E26F198F300522E3B /* LaunchScreen.storyboard */; };
-		8140440829554DF50062C2A0 /* WWFloatingActionButton in Frameworks */ = {isa = PBXBuildFile; productRef = 8140440729554DF50062C2A0 /* WWFloatingActionButton */; };
+		8145D907295E98F0008E5CCF /* WWFloatingActionButton in Frameworks */ = {isa = PBXBuildFile; productRef = 8145D906295E98F0008E5CCF /* WWFloatingActionButton */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8140440829554DF50062C2A0 /* WWFloatingActionButton in Frameworks */,
+				8145D907295E98F0008E5CCF /* WWFloatingActionButton in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +115,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				8140440729554DF50062C2A0 /* WWFloatingActionButton */,
+				8145D906295E98F0008E5CCF /* WWFloatingActionButton */,
 			);
 			productName = Example;
 			productReference = 3DBCD87026F198EF00522E3B /* Example.app */;
@@ -145,7 +145,7 @@
 			);
 			mainGroup = 3DBCD86726F198EF00522E3B;
 			packageReferences = (
-				8140440629554DF50062C2A0 /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */,
+				8145D905295E98F0008E5CCF /* XCRemoteSwiftPackageReference "@WWFloatingActionButton" */,
 			);
 			productRefGroup = 3DBCD87126F198EF00522E3B /* Products */;
 			projectDirPath = "";
@@ -381,20 +381,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8140440629554DF50062C2A0 /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */ = {
+		8145D905295E98F0008E5CCF /* XCRemoteSwiftPackageReference "@WWFloatingActionButton" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/William-Weng/WWFloatingActionButton.git";
+			repositoryURL = "file:///Users/ios/Desktop/@WWFloatingActionButton";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.1.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8140440729554DF50062C2A0 /* WWFloatingActionButton */ = {
+		8145D906295E98F0008E5CCF /* WWFloatingActionButton */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8140440629554DF50062C2A0 /* XCRemoteSwiftPackageReference "WWFloatingActionButton" */;
+			package = 8145D905295E98F0008E5CCF /* XCRemoteSwiftPackageReference "@WWFloatingActionButton" */;
 			productName = WWFloatingActionButton;
 		};
 /* End XCSwiftPackageProductDependency section */

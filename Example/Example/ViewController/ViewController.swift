@@ -15,7 +15,7 @@ final class ViewController: UIViewController {
 
     @IBOutlet weak var myFloatingActionButton: WWFloatingActionButton!
     @IBOutlet weak var myImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var statusImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,25 +28,37 @@ final class ViewController: UIViewController {
 // MARK: - WWFloatButtonDelegate
 extension ViewController: WWFloatingActionButtonDelegate {
     
-    func currentViewType(with tag: Int) -> WWFloatingButtonAnimationViewType {
+    func currentViewType(with tag: Int) -> WWFloatingActionButton.AnimationViewType {
         return .tabBarController(self)
     }
     
-    func itemButtonAnimationType(with tag: Int) -> WWFloatingButtonAnimationType {
-        return .circleArc(startAngle: 90, endAngle: 180, distance: 200, count: 5)
+    func itemButtonAnimationType(with tag: Int) -> WWFloatingActionButton.AnimationType {
+        return .up
     }
-
+    
     func itemButtonImages(with tag: Int) -> [UIImage] {
         let images = [#imageLiteral(resourceName: "plus"), #imageLiteral(resourceName: "power"), #imageLiteral(resourceName: "refresh"), #imageLiteral(resourceName: "play"), #imageLiteral(resourceName: "chart")]
         return images
     }
     
-    func itemButton(with tag: Int, didTouched index: Int) {
-        let images = [#imageLiteral(resourceName: "desktop_1"), #imageLiteral(resourceName: "desktop_2"), #imageLiteral(resourceName: "desktop_5"), #imageLiteral(resourceName: "desktop_3"), #imageLiteral(resourceName: "desktop_4")]
-        myImageView.image = images[index]
+    func itemButtonTexts(with tag: Int) -> [String] {
+        return ["OPEN", "SHARE", "INFO", "CLOSE", "ADD"]
+    }
+    
+    func itemButtonTextsFont(with tag: Int) -> UIFont {
+        return UIFont.systemFont(ofSize: 32)
+    }
+    
+    func itemButtonTextsColor(with tag: Int) -> UIColor {
+        return .red
     }
     
     func mainButtonStatus(isTouched: Bool, with tag: Int) {
-        titleLabel.text = isTouched ? "Touched" : "Closed"
+        statusImageView.image = isTouched ? #imageLiteral(resourceName: "LightOn") : #imageLiteral(resourceName: "LightOff")
+    }
+    
+    func itemButton(with tag: Int, didTouched index: Int) {
+        let images = [#imageLiteral(resourceName: "desktop_1"), #imageLiteral(resourceName: "desktop_2"), #imageLiteral(resourceName: "desktop_5"), #imageLiteral(resourceName: "desktop_3"), #imageLiteral(resourceName: "desktop_4")]
+        myImageView.image = images[index]
     }
 }

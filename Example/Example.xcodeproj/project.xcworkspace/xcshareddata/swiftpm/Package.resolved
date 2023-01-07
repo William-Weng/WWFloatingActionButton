@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "wwfloatingactionbutton",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/William-Weng/WWFloatingActionButton.git",
+      "identity" : "@wwfloatingactionbutton",
+      "kind" : "localSourceControl",
+      "location" : "/Users/ios/Desktop/@WWFloatingActionButton",
       "state" : {
-        "revision" : "94cf1c64323be5fa543b91ef5e51f4fce7fc41b5",
-        "version" : "1.1.1"
+        "revision" : "1771b63f9dbd5315b606c533e4466e33372c377d",
+        "version" : "0.17.4"
       }
     }
   ],
