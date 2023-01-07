@@ -12,16 +12,25 @@ import UIKit
 import WWFloatingActionButton
 
 final class ViewController: UIViewController {
-
-    @IBOutlet weak var myFloatingActionButton: WWFloatingActionButton!
+    
+    enum FloatingActionButtonTag: Int {
+        case left = 100
+        case right = 101
+    }
+    
+    @IBOutlet weak var leftFloatingActionButton: WWFloatingActionButton!
+    @IBOutlet weak var rightFloatingActionButton: WWFloatingActionButton!
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var statusImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "WWFloatingActionButton"
-        myFloatingActionButton.myDelegate = self
-        myFloatingActionButton.backgroundColor = .clear
+        
+        leftFloatingActionButton.myDelegate = self
+        rightFloatingActionButton.myDelegate = self
+        leftFloatingActionButton.backgroundColor = .clear
+        rightFloatingActionButton.backgroundColor = .clear
     }
 }
 
@@ -33,7 +42,13 @@ extension ViewController: WWFloatingActionButtonDelegate {
     }
     
     func itemButtonAnimationType(with tag: Int) -> WWFloatingActionButton.AnimationType {
-        return .up
+        
+        guard let buttonType = FloatingActionButtonTag(rawValue: tag) else { return .up(isTextMirror: false) }
+        
+        switch buttonType {
+        case .left: return .up(isTextMirror: true)
+        case .right: return .down(isTextMirror: false)
+        }
     }
     
     func itemButtonImages(with tag: Int) -> [UIImage] {

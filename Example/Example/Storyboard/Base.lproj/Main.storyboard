@@ -21,12 +21,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F30-jQ-vmq" customClass="WWFloatingActionButton" customModule="WWFloatingActionButton">
-                                <rect key="frame" x="240" y="455" width="64" height="64"/>
+                            <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F30-jQ-vmq" customClass="WWFloatingActionButton" customModule="WWFloatingActionButton">
+                                <rect key="frame" x="16" y="455" width="64" height="64"/>
                                 <color key="backgroundColor" systemColor="systemMintColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="F30-jQ-vmq" secondAttribute="height" multiplier="1:1" id="G1z-o1-fUj"/>
-                                    <constraint firstAttribute="width" constant="64" id="X2x-Xl-g1n"/>
+                                    <constraint firstAttribute="width" constant="64" id="4Ph-Rm-BoX"/>
+                                    <constraint firstAttribute="width" secondItem="F30-jQ-vmq" secondAttribute="height" multiplier="1:1" id="fwB-ao-hYK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="itemButtonCount">
@@ -55,20 +55,50 @@
                                     <constraint firstAttribute="width" secondItem="gE6-OK-6eS" secondAttribute="height" id="O6A-hy-JqS"/>
                                 </constraints>
                             </imageView>
+                            <view tag="101" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPj-B8-KpG" customClass="WWFloatingActionButton" customModule="WWFloatingActionButton">
+                                <rect key="frame" x="240" y="44" width="64" height="64"/>
+                                <color key="backgroundColor" systemColor="systemMintColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="9oe-cS-Mg6"/>
+                                    <constraint firstAttribute="width" secondItem="SPj-B8-KpG" secondAttribute="height" multiplier="1:1" id="TQB-Gg-c7n"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="itemButtonCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="itemGap">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="itemBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.30186775659999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                                        <real key="value" value="0.25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="touchedImage" value="switch_on"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="disableImage" value="switch_off"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="labelGap">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="F30-jQ-vmq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7OC-j7-MbI"/>
+                            <constraint firstItem="F30-jQ-vmq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="GbO-rx-pr7"/>
                             <constraint firstItem="gE6-OK-6eS" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LYI-xZ-GnP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F30-jQ-vmq" secondAttribute="trailing" constant="16" id="M9d-Tj-mn1"/>
-                            <constraint firstItem="F30-jQ-vmq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OuC-lh-F94"/>
                             <constraint firstItem="gE6-OK-6eS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZW2-Mm-kd6"/>
+                            <constraint firstItem="SPj-B8-KpG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="t4x-LT-qDl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SPj-B8-KpG" secondAttribute="trailing" constant="16" id="xAs-ay-DmX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nvs-zi-2RQ"/>
                     <connections>
-                        <outlet property="myFloatingActionButton" destination="F30-jQ-vmq" id="Mz4-d7-u8g"/>
+                        <outlet property="leftFloatingActionButton" destination="F30-jQ-vmq" id="JPt-hB-wqW"/>
                         <outlet property="myImageView" destination="fbP-k7-Bae" id="cdQ-oh-KOL"/>
+                        <outlet property="rightFloatingActionButton" destination="SPj-B8-KpG" id="Yt9-tN-Lw2"/>
                         <outlet property="statusImageView" destination="gE6-OK-6eS" id="RUb-XQ-dJm"/>
                     </connections>
                 </viewController>

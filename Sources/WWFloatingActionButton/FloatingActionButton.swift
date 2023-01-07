@@ -44,18 +44,20 @@ open class WWFloatingActionButton: UIView {
     private var itemImages: [UIImage]? { get { myDelegate?.itemButtonImages(with: tag) }}
     private var itemTexts: [String]? { get { myDelegate?.itemButtonTexts(with: tag) }}
 
-    private var currentView: UIView? { get {
+    private var currentView: UIView? {
         
-        guard let viewType = myDelegate?.currentViewType(with: tag) else { return nil }
-        
-        switch viewType {
-        case .viewController(let viewController): return viewController.view
-        case .navigationController(let viewController): return viewController.navigationController?.view
-        case .tabBarController(let viewController): return viewController.tabBarController?.view
+        get {
+            guard let viewType = myDelegate?.currentViewType(with: tag) else { return nil }
+            
+            switch viewType {
+            case .viewController(let viewController): return viewController.view
+            case .navigationController(let viewController): return viewController.navigationController?.view
+            case .tabBarController(let viewController): return viewController.tabBarController?.view
         }
     }}
-        
+    
     private var isTouched: Bool = false {
+        
         willSet {
             let image = (newValue) ? touchedImage : disableImage
             mainButton.setImage(image, for: .normal)
@@ -133,7 +135,7 @@ private extension WWFloatingActionButton {
         floatingButtonMainView = UIView(frame: currentView.frame)
         floatingButtonMainView.isUserInteractionEnabled = false
         floatingButtonMainView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(Self.mainButtonAction(_:))))
-        floatingButtonMainView.backgroundColor = itemBackgroundColor
+        floatingButtonMainView.backgroundColor = .clear
         
         currentView.insertSubview(floatingButtonMainView, at: 0)
     }
@@ -151,6 +153,9 @@ private extension WWFloatingActionButton {
             
             let _button = itemButtonMaker(with: index, image: itemImages[safe: index])
             let _label = itemButtonLabelMaker(for: _button, text: itemTexts?[safe: index])
+            
+            _button.alpha = 0.0
+            _label.alpha = 0.0
             
             itemButtons.append(_button)
             itemButtonLabels.append(_label)
@@ -189,13 +194,13 @@ private extension WWFloatingActionButton {
     func itemButtonLabelMaker(for button: UIButton, text: String?) -> UILabel {
         
         let label = UILabel(frame: .zero)
-        let animationType = myDelegate?.itemButtonAnimationType(with: tag) ?? .up
+        let animationType = myDelegate?.itemButtonAnimationType(with: tag) ?? .up(isTextMirror: false)
         let font = myDelegate?.itemButtonTextsFont(with: tag) ?? UIFont.systemFont(ofSize: 12.0)
         let textColor = myDelegate?.itemButtonTextsColor(with: tag) ?? .black
-
+        
         switch animationType {
-        case .up, .down: label.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
-        case .left, .right: label.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        case .up(let isTextMirror), .down(let isTextMirror): label.layer.anchorPoint = !isTextMirror ? CGPoint(x: 1.0, y: 0.5) : CGPoint(x: 0.0, y: 0.5)
+        case .left(let isTextMirror), .right(let isTextMirror): label.layer.anchorPoint = !isTextMirror ? CGPoint(x: 0.5, y: 0.5) : CGPoint(x: 0.5, y: 0.5)
         case .circleArc(_, _, _): break
         }
         
@@ -237,11 +242,12 @@ private extension WWFloatingActionButton {
         
         guard let currentView = self.currentView else { return }
         
-        let animationType = myDelegate?.itemButtonAnimationType(with: tag) ?? .up
+        let animationType = myDelegate?.itemButtonAnimationType(with: tag) ?? .up(isTextMirror: false)
         currentView.bringSubviewToFront(floatingButtonMainView)
         currentView.bringSubviewToFront(self)
         
         itemTransparency(alpha: 0.0, itemButtons: buttons, itemLabels: labels)
+        floatingButtonMainView.backgroundColor = itemBackgroundColor
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: animationDuration, delay: 0, options: [.curveEaseInOut], animations: {
             
@@ -263,7 +269,7 @@ private extension WWFloatingActionButton {
             finished(true)
         })
     }
-        
+    
     /// 主按鍵Close的動畫 => 回到原點Button的位置
     /// - Parameters:
     ///   - buttons: [UIButton]
@@ -274,9 +280,10 @@ private extension WWFloatingActionButton {
         
         guard let currentView = self.currentView else { return }
         
-        let animationType = myDelegate?.itemButtonAnimationType(with: tag) ?? .up
+        let animationType = myDelegate?.itemButtonAnimationType(with: tag) ?? .up(isTextMirror: false)
         
         itemTransparency(alpha: 1.0, itemButtons: buttons, itemLabels: labels)
+        floatingButtonMainView.backgroundColor = .clear
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: animationDuration, delay: 0, options: [.curveEaseInOut], animations: {
             

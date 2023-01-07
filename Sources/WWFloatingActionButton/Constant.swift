@@ -19,10 +19,10 @@ public extension WWFloatingActionButton {
     // MARK: - 動畫類型
     enum AnimationType {
         
-        case up
-        case down
-        case left
-        case right
+        case up(isTextMirror: Bool)
+        case down(isTextMirror: Bool)
+        case left(isTextMirror: Bool)
+        case right(isTextMirror: Bool)
         case circleArc(startAngle: CGFloat, endAngle: CGFloat, distance: CGFloat)
         
         /// 產生動畫的frame
@@ -47,15 +47,24 @@ public extension WWFloatingActionButton {
             return CGRect(origin: coordinates, size: baseFrame.size)
         }
         
+        /// 按鍵提示文字相對與按鈕的位置 (預設：上左 / 鏡射：下右)
+        /// - Parameters:
+        ///   - button: UIButton
+        ///   - textGap: CGFloat
+        /// - Returns: CGPoint
         func labelCenter(for button: UIButton, textGap: CGFloat) -> CGPoint {
             
-            let offset = (button.bounds.width * 0.5 + textGap)
+            let width = min(button.bounds.width, button.bounds.height)
+            let offset = (width * 0.5 + textGap)
             let center: CGPoint
             
             switch self {
-            case .up, .down: center = CGPoint(x: button.center.x - offset, y: button.center.y)
-            case .left, .right: center = CGPoint(x: button.center.x, y: button.center.y - offset)
-            case .circleArc(_, _, _): center = CGPoint(x: button.center.x - offset, y: button.center.y)
+            case .up(let isTextMirror), .down(let isTextMirror):
+                center = !isTextMirror ? CGPoint(x: button.center.x - offset, y: button.center.y) : CGPoint(x: button.center.x + offset, y: button.center.y)
+            case .left(let isTextMirror), .right(let isTextMirror):
+                center = !isTextMirror ? CGPoint(x: button.center.x, y: button.center.y + offset) : CGPoint(x: button.center.x, y: button.center.y - offset)
+            case .circleArc(_, _, _):
+                center = CGPoint(x: button.center.x - offset, y: button.center.y)
             }
             
             return center
