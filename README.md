@@ -9,6 +9,7 @@ Android-like FloatingActionButton. / 仿Android的FloatingActionButton.
 ### 版本更新說明
 |版本號|說明|備註|
 |-|-|-|
+|1.2.2|修正主按鍵圖示過大的問題|-|
 |1.2.1|補下右的文字顯示功能|-|
 |1.2.0|加上左的文字顯示功能|-|
 |1.1.2|修正extension CGFloat|-|

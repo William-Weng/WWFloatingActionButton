@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWFloatingActionButton.git",
       "state" : {
-        "revision" : "c43d8c3cc21408b60b74a1718469c908cdc5810d",
-        "version" : "1.2.1"
+        "revision" : "84a0a9438850d9a52411eb57bda45f940a3cf95b",
+        "version" : "1.2.2"
       }
     }
   ],
