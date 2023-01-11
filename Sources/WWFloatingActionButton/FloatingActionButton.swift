@@ -32,12 +32,12 @@ open class WWFloatingActionButton: UIView {
     @IBInspectable var disableImage: UIImage = UIImage()                                    // 關閉時的圖片
 
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var mainButton: UIButton!
     
     public var myDelegate: WWFloatingActionButtonDelegate?
     
     private var isInitSettting = false
     private var floatingButtonMainView: UIView = UIView()
+    private var mainButton: UIButton = UIButton()
     private var itemButtons: [UIButton] = []
     private var itemButtonLabels: [UILabel] = []
 
@@ -110,9 +110,22 @@ private extension WWFloatingActionButton {
         bundle.loadNibNamed(name, owner: self, options: nil)
         
         contentView.frame = bounds
+        initMainButton(with: contentView)
+        
         addSubview(contentView)
     }
     
+    /// 設定最主要的UIView
+    /// - Parameter view: UIView
+    func initMainButton(with view: UIView) {
+        
+        mainButton = UIButton(frame: view.frame)
+        mainButton.setImage(disableImage, for: .normal)
+        mainButton.addTarget(self, action: #selector(Self.mainButtonAction(_:)), for: .touchUpInside)
+        
+        contentView.addSubview(mainButton)
+    }
+
     /// 切始化 (只會Run一次)
     func initSetting() {
         
